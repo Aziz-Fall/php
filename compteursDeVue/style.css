@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Cardo:400,400i,700&display=swap');
+
+@font-face
+{
+    font-display: swap;
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.ttf') format('opentype');
+    font-weight: 400;
+}
+
+@font-face
+{
+    font-display: swap;
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Bold.ttf') format('opentype');
+    font-weight: bold;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body
+{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    color: rgba(0, 0, 0, 0.870588);
+    line-height: 1.6;
+    margin: 0;
+}
+.topBar
+{
+    position: fixed;
+    color: #9f9f9f;
+    background: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 91px;
+    padding: 31px 88px;   
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.topBar nav
+{
+    float: left;
+}
+
+.topBar nav a
+{
+    color: #9f9f9f;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0 52px;
+}
+
+.topBar nav a:hover, .topBar nav a.active
+{
+    color: #000000;
+}
+
+.social
+{
+    float: right;
+}
+
+.social a
+{
+    padding: 12px;
+    opacity: .5;
+}
+
+.social a:hover
+{
+    opacity: 1;
+}
+
+.banniere
+{
+    background: no-repeat center center / cover url("img/header.png");
+    height: 427px;
+}
+
+.main
+{
+    width: 100%;
+    display: flex;
+}
+
+.section
+{
+    float: left;
+    width: calc(100%-378px);
+}
+
+aside
+{
+    float: right;
+    width: 378px;
+    padding: 19px 68px 0 57px;
+    background: #fbfbfb;
+}
+
+aside .contentAside h1
+{
+    margin-bottom: 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    text-align: justify;
+    font-weight: bold;
+}
+
+aside .contentAside .lien
+{
+    display: flex;
+    flex-direction: column;
+}
+
+aside .contentAside .lien a
+{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 23px;
+    text-align: justify;
+    color:#9f9f9f;
+    margin-bottom: 17px;
+    text-decoration: none;
+}
+
+aside .separateur img
+{
+    padding-right: 40px;
+}
+
+.section
+{
+    padding: 43px 0 205px 285px;
+    background: #ffffff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.section article
+{
+    margin: 0 318px 52px 0;
+    display: flex;
+}
+
+.section article .chat
+{
+    padding: 0 26px 0 26px;
+    width: 100%;
+    height: auto;
+}
+
+.section article .actu .datePublication p 
+{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 10px;
+    color: #9f9f9f;
+    margin-bottom: 7.6px;
+    margin-top: 2px;
+}
+
+.section article h1
+{
+    font-family: 'Cardo', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 30px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.section article .actu .contentArticle p
+{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: justify;
+    color: rgba(0, 0, 0, 0.870588);
+}
+
+p::first-letter
+{
+    font-weight: bold;
+    font-size: 2em;
+}
+
