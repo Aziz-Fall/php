@@ -7,7 +7,7 @@ if(!empty($_POST['user']) && !empty($_POST['password']))
     {
         session_start();
         $_SESSION['connecte'] = 1;
-        header('location: dashboard.php');
+        header('Location: dashboard.php');
     }
     else
         $erreur = 'Identifications incorrects';
@@ -17,7 +17,7 @@ require_once 'auth.php';
 
 if(est_connecte())
 {
-    header('location: dashboard.php');
+    header('Location: dashboard.php');
     exit();
 }
 ?>

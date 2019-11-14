@@ -1,8 +1,14 @@
 <?php
 require_once 'auth.php';
-var_dump(est_connecte());
+//var_dump(est_connecte());
 forcer_utilisateur_connecte();
 require_once 'fonction.php';
+
+if(isset($_GET['deconnecter']))
+{
+    session_destroy();
+    header('location: login.php');
+}
 $annee = (int) date('Y');
 $total = nombres_vues();
 $annee_selectionnee = empty($_GET['annee'])? null : (int)$_GET['annee'];
@@ -28,6 +34,7 @@ $mois = [
     <title>Dashboard</title>
 </head>
 <body>
+    <p><a href="logout.php">Se Deconnecter</a></p>
     <div class="row">
         <div class="col-md-4">
             <div class="list-group">
