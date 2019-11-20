@@ -1,5 +1,5 @@
 <?php 
-    function nav_item(string $lien, string $titre, string $link_class = ' '): string 
+    function nav_item(string $lien, string $titre, string $link_class = ' '):string 
     {
         $class = 'nav-item';
 
@@ -11,40 +11,34 @@
             <a class="$link_class" href="$lien">$titre</a>fonction.php on line 31
         </li>
 HTML;
-
     }
-    function nav_menu(string $link_class = '')
+
+    function nav_menu(string $link_class = ''):string
     {
         return nav_item('/index.php', 'Acceuil', $link_class) . nav_item('/contact.php', 'Contact', $link_class);
     }
 
-    function prix_parfum(array $par, array $parfum) 
+    function checkbox(string $name, string $value, array $data):string 
     {
-        $prix = 0;
-            for($i = 0; $i < sizeof($par); $i++)
-                if(isset($par[$i]) && array_key_exists($par[$i], $parfum))
-                         $prix += (int)$parfum[$par[$i]];
+        $attributes = '';
 
-        return $prix;
+        if(isset($data[$name]) && in_array($value, $data[$name]))
+             $attributes .= 'checked';
+
+        return <<<HTML
+            <input type = "checkbox" name="{$name}[]" value="$value" $attributes>
+HTML;
     }
 
-    function prix_cornet(array $cor, array $cornet)
+    function radio(string $name, string $value, array $data):string 
     {
-        $prix = 0;
-            for($i = 0; $i < sizeof($cor); $i++)
-                if(isset($cor[$i]) && array_key_exists($cor[$i], $cornet))
-                         $prix += (int)$cornet[$cor[$i]];
+        $attributes = '';
 
-        return $prix;
-    }
+        if(isset($data[$name]) && ($value == $data[$name]))
+             $attributes .= 'checked';
 
-    function prix_supplement(array $sup, array $supplement)
-    {
-        $prix = 0;
-            for($i = 0; $i < sizeof($sup); $i++)
-                if(isset($sup[$i]) && array_key_exists($sup[$i], $supplement))
-                         $prix += $supplement[$sup[$i]];
-
-        return $prix;
+        return <<<HTML
+            <input type = "radio" name="$name" value="$value" $attributes>
+HTML;
     }
 ?>
