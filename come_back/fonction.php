@@ -8,7 +8,7 @@
 
         return <<<HTML
         <li class="$class">
-            <a class="$link_class" href="$lien">$titre</a>fonction.php on line 31
+            <a class="$link_class" href="$lien">$titre</a>
         </li>
 HTML;
     }
@@ -41,4 +41,44 @@ HTML;
             <input type = "radio" name="$name" value="$value" $attributes>
 HTML;
     }
-?>
+
+    function select(string $name , $value, array $option): string 
+    {
+        $html_options = [];
+        foreach($option as $key => $option)
+        {
+            $attributes = ($key == $value) ? 'selected' : '';
+            $html_options[] = "<option value='$key' $attributes>$option</option>";
+        }
+        return "<select class ='form-control' name=$name >".implode($html_options)."</select>";
+    }
+
+    function creneaux_html(array $creneaux): string 
+    {
+        if(empty($creneaux))
+        return "Fermé";
+
+        $phrase = [];
+
+        foreach($creneaux as $creneau)
+        {
+            $phrase[] = "<strong>De {$creneau[0]}</strong>H / <strong>{$creneau[1]}</strong>H<br>";
+        }
+       
+        return "Ouvert:<br>  ". implode(" ", $phrase);    
+    }
+
+    function in_creneaux(int $heure, array $creneaux): bool
+    {
+        foreach($creneaux as $creneau)
+        {
+            $debut = $creneau[0];
+            $fin = $creneau[1];
+
+            if($heure >= $debut AND $heure < $fin)
+                return true;
+        }
+
+        return false;
+    }
+
