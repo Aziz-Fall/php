@@ -82,3 +82,21 @@ HTML;
         return false;
     }
 
+    function enregister_email(string $mail = null)
+    {
+        $error = null;
+        if(isset($mail))
+        {
+            if(filter_var(htmlspecialchars($mail), FILTER_VALIDATE_EMAIL))
+            {
+                $fichier = __DIR__. DIRECTORY_SEPARATOR . 'emails'. DIRECTORY_SEPARATOR . 'mail-'.date('Y-m-d');
+                file_put_contents($fichier, htmlspecialchars($mail). PHP_EOL, FILE_APPEND);
+            }
+            else 
+            {
+                $error = "Email invalide";
+            }
+        }
+        return $error;
+    }
+
