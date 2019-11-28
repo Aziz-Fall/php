@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <?php require_once('newsletter.php'); ?>
+            <!--<?php //require_once('newsletter.php'); ?>-->
         </div>
         <div class="col-md-4">
             <h5>Navigation</h5>
