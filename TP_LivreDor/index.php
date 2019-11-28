@@ -2,6 +2,8 @@
 <?php
 require_once 'Message.php';
 require_once 'GuestBook.php';
+$message = null;
+$guestBook = null;
 $succes = null;
 $error = null;
 if(!empty($_POST['userName']) and !empty($_POST['message']))
@@ -12,10 +14,15 @@ if(!empty($_POST['userName']) and !empty($_POST['message']))
         $message = new Message(htmlspecialchars($_POST['userName']), htmlspecialchars($_POST['message']), $date);
         $errors = $message->getError();
 
-        if($errors['userName'] === null)
-            $error = "User name no valid ".$error['userName'];
+        if($errors['userName'] !== null)
+            $error .= "User name no valid: ".$errors['userName'];
         else
+        {
             $succes = "Message sended";
+            $guestBook = new GuestBook('data.txt');
+            $guestBook->addMessage($message);
+        }
+        
     }
 } 
 ?>
@@ -44,5 +51,21 @@ if(!empty($_POST['userName']) and !empty($_POST['message']))
         </form>
     </div>
 </div>
+
+<h2>Les Message:</h2>
+
+<?php if(!empty($message) and !empty($guestBook)):?>
+    <?php $data = $guestBook->getMessage() ?>
+    <pre>
+        <?php var_dump($data); ?>
+    </pre>
+    <?php foreach($data as $key => $d):?>
+        <pre>
+        <?php var_dump($d); ?>
+    </pre>
+        <?php var_dump(Message::fromJSON($d)) ?>
+        <?php //$d->toHTML() ?>
+    <?php endforeach ?>
+<?php endif ?>
 
 <?php require_once '..'.DIRECTORY_SEPARATOR.'come_back'.DIRECTORY_SEPARATOR.'footer.php'; ?>

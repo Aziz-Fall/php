@@ -22,13 +22,9 @@ class Message
 
     public function toHTML():string
     {
-        return " ";
-       /* return <<<HTML 
-                <p>
-                    <strong>$this->_userName</strong> <em>$this->$_date</em><br>
-                    $this->_message
-                </p>
-HTML;*/
+        return <<<HTML
+                <p> <strong>$this->_userName</strong> <em>$this->_date </em> $this->_message. </p>
+HTML;
     }
 
     public function getError(): array
@@ -37,7 +33,7 @@ HTML;*/
             'userName' => null,
             'message' => null
         ];
-        if($this->isValid())
+        if(!$this->isValid())
         {
             $error['userName'] = $this->_userName;
             $error['message']  = $this->_message;
@@ -57,8 +53,6 @@ HTML;*/
 
     public static function fromJSON(string $message): Message
     {
-        $tableau = [];
-
         $tableau = json_decode($message);
 
         $m = new Message($tableau['userName'], $tableau['message'], $tableau['date']);
